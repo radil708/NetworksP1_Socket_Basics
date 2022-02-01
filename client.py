@@ -72,7 +72,7 @@ def arg_checkstep():
         rec1 = receive_msg(m_sock)
         # TODO comment out all print statements
         #print("\nReceiving Expressions\nPlease Wait...")
-        #
+
 
         while "EVAL" in rec1:
             removed_frame = rec1.lstrip("cs5700spring2022 EVAL ")
