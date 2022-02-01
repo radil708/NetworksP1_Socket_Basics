@@ -53,6 +53,9 @@ def handle_args():
         dict_arguments["Status"] = True
         return dict_arguments
 
+def print_out_only_flag(flag_str, user):
+    flag_msg = flag_str.lstrip("cs5700spring2022 BYE ")
+    return f"{user}'s secret flag is : " + flag_msg
 
 def arg_checkstep():
     my_dict = handle_args()
@@ -60,13 +63,15 @@ def arg_checkstep():
         print("Program FAILED; Exiting Process")
         return
     else:
-        print("-------------------------")
+        # TODO comment out all print statements
+        #print("-------------------------")
         m_sock = create_ssl_socket(socket.gethostbyname(my_dict["host"]), my_dict["port"], TIMEOUT)
         first_sendout_str = FIRST_MSG_PREFIX + my_dict["NEU"] + "\n"
 
         send_msg(m_sock, first_sendout_str)
         rec1 = receive_msg(m_sock)
-        print("\nReceiving Expressions\nPlease Wait...")
+        # TODO comment out all print statements
+        #print("\nReceiving Expressions\nPlease Wait...")
 
         while "EVAL" in rec1:
             removed_frame = rec1.lstrip("cs5700spring2022 EVAL ")
@@ -87,7 +92,7 @@ def arg_checkstep():
             rec1 = receive_msg(m_sock)
 
         if "Unknown_Husky_Id" in rec1:
-            print("NEU argument: [{}] is an UNKNOWN NEU user".format(my_dict["NEU"]))
+            print("ERROR: NEU argument: [{}] is an UNKNOWN NEU user".format(my_dict["NEU"]))
             print("Program Exiting")
             print("\nClosing Socket...")
             m_sock.close()
@@ -95,13 +100,17 @@ def arg_checkstep():
             return
 
         else:
-            print("\nAll expressions solved\n\nDisplaying Secret Flag Message:")
-            print(rec1)
+            # TODO comment out all print statements
+            #print("\nAll expressions solved\n\nDisplaying Secret Flag Message:")
+            print(print_out_only_flag(rec1, my_dict["NEU"] ))
+            #TODO comment out all print statement
+            #print(rec1)
 
-        print("\nClosing Socket...")
+        # TODO comment out all print statement
+        #print("\nClosing Socket...")
         m_sock.close()
 
-        print("Socket Succesfully Closed")
+        #print("Socket Succesfully Closed")
 
 
 

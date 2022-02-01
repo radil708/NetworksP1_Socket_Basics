@@ -22,10 +22,12 @@ def create_ssl_socket(host_in : str, port_in : int, timeout_sec : int):
     my_socket.settimeout(timeout_sec)
 
     wrapped_socket = ssl.wrap_socket(my_socket, ssl_version=ssl.PROTOCOL_TLSv1)
-    print("SSL socket object succesfully created\n")
+    #TODO comment out all print statements
+    #print("SSL socket object succesfully created\n")
 
     try:
         wrapped_socket.connect((host_in, port_in))
+        # TODO comment out all print statements
         print(f"Socket Successfully Connected to:\nHost: {host_in}\nPort: {port_in}")
     except:
         print(f"Socket Failed to connect to Host: {host_in} at Port: {port_in}")
