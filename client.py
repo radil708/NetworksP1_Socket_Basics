@@ -95,9 +95,11 @@ def arg_checkstep():
         if "Unknown_Husky_Id" in rec1:
             print("ERROR: NEU argument: [{}] is an UNKNOWN NEU user".format(my_dict["NEU"]))
             print("Program Exiting")
-            print("\nClosing Socket...")
+            #TODO comment out debug statement
+            #print("\nClosing Socket...")
             m_sock.close()
-            print("Socket Succesfully Closed")
+            #TODO comment out debug statements
+            #print("Socket Succesfully Closed")
             return
 
         else:
