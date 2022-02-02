@@ -55,7 +55,8 @@ def handle_args():
 
 def print_out_only_flag(flag_str, user):
     flag_msg = flag_str.lstrip("cs5700spring2022 BYE ")
-    return f"{user}'s secret flag is : " + flag_msg
+    #return f"{user}'s secret flag is : " + flag_msg
+    return flag_msg
 
 def arg_checkstep():
     my_dict = handle_args()
