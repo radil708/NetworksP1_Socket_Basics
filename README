@@ -8,12 +8,6 @@ Features:
 	- Object Oriented Design for recursive tree structures
 
 ---------------------------------------------------------------------------------------
-
-Ramzi Adil
-CS5700 Spring 2022
-Assignment 1 Sockets
-Language: Python
-
 High Level Requirements:
 	- Create a client program that uses a TLS socket that connects to the server
 
