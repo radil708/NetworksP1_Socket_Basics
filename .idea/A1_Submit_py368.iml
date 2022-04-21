@@ -7,4 +7,12 @@
     <orderEntry type="jdk" jdkName="Python 3.6 (pythonProjecttest368)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PyNamespacePackagesService">
+    <option name="namespacePackageFolders">
+      <list>
+        <option value="$MODULE_DIR$/simple_socket_package" />
+        <option value="$MODULE_DIR$/tree_expression_package" />
+      </list>
+    </option>
+  </component>
 </module>

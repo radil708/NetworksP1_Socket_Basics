@@ -1,0 +1,102 @@
+This repo is intended to showcase code I've written in python for my network projects
+to potential employers
+
+---------------------------------------------------------------------------------------
+Features:
+	- Socket implementation
+	- Recursive data structure implementation
+	- Object Oriented Design for recursive tree structures
+
+---------------------------------------------------------------------------------------
+
+Ramzi Adil
+CS5700 Spring 2022
+Assignment 1 Sockets
+Language: Python
+
+High Level Requirements:
+	- Create a client program that uses a TLS socket that connects to the server
+
+	- Once connection is established, receive equations in the form of strings
+	 	from the server and send the correct responses back to the server,
+	 	all the while following the communication protocol described in the
+	 	project prompt.
+
+	- Once all the equations are solved, the server will send a secret flag,
+		display this secret flag at the end of the program.
+
+	- save this secret flag in a file called secret_flags
+
+	- Your program should print exactly one line of output:
+		the secret flag from the server's BYE message. If your program encounters
+		an error, it may print an error message before terminating. Your program
+		should not write any files to disk, including writing to the secret_flags file.
+=============================================================================================
+
+How to run the program:
+
+	The client program must execute on the command line using the following command:
+		./client <-p port> <-s> [hostname] [NEU ID]
+
+	(Makefile is included in this code to create the executable, but the executable
+		is packaged in this submission as well)
+
+***Note to others who want to run this program: my neu id may be deprecated by the time
+	you want to run it, but as an example, I ran my program using the command:
+
+	./client -p 27995 -s project1.5700.network adil.r
+
+*** Note if you want to see the messages sent and received please run the
+	runWithDisplay.py without any arguments. I pre-filled the domain/hostname,
+	port, and username in the file. Again this is pre-filled with my credentials
+	which may be deprecated at the time.
+=============================================================================================
+File Organization:
+	simple_socket_package:
+		- Contains socket related class and socket related helper functions.
+		- The mySimpleSocketObj class that handles communication with the server
+			and protocol.
+
+	tree_expression_package:
+		- Contains node and tree classes. These are used to create a recursive
+			tree structure that can solve equations received from the server.
+
+	tests:
+		- contains code that tests the nodes, and tree classes.
+
+	The rest of the files are in the main directory and are related to the executable
+
+=============================================================================================
+
+My Approach:
+ - I invested a lot of my time in designing the program, making diagrams and flowcharts etc...
+ - I used a recursive approach to solve the statements sent by the server
+ - I made my own node class, which is a component of my binary tree class (txpr_tree)
+ - Each node holds a data, left pointer, and right pointer attribute
+    > the data attribute can be an operator(stored as a string) or an int
+ - I built the tree by scanning the string from right to left until I
+    could find the operator with the highest priority in the statement
+ - I would successively build my tree layer by layer, the integer values
+    would end up in the leaves of the tree and the other nodes would
+    hold the operator.
+ - I used a try except block to catch any zero division errors.
+ - I added a lot of debug statements which I later linked to a display variable.
+ - Then I worked on making functions that can make sockets and interact with the server
+ - I then added functionality to take in arguments
+ - At each step of the way I made JUnit tests to ensure the functionality of my methods/functions/classes
+    > These test are in my tests folder that you can see
+
+My Challenges:
+ - The biggest challenge for me was understanding sockets. I don't have a background
+    in networking so understanding how they operate was my biggest challenge, but I successfully
+    learned how to create sockets and communicate with servers.
+
+==================================================================================================
+Project Submission:
+	To turn-in your project, you should submit your (thoroughly documented) code along with three other files:
+	A Makefile that compiles your code.
+	A plain-text (no Word or PDF) README file. In this file, you should briefly describe your high-level approach, any challenges you faced, and an overview of how you tested your code.
+	A file called secret_flags. This file should contain your secret flag, in plain ASCII.
+
+
+

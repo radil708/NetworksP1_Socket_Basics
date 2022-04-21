@@ -1,22 +1,19 @@
 import unittest
-from txpr_node import t_node
+from tree_expression_package.txpr_node import txpr_node_obj
 
 
 class TestTxprNodes(unittest.TestCase):
 
     def setUp(self):
-        self.node1 = t_node()
+        self.node1 = txpr_node_obj()
         self.xpr1 = "5"
         self.xpr2 = "-10"
         self.xpr3 = "( 2 // 3 )"
 
-
-
-
     def test_constructor(self):
-        self.assertEquals(None, self.node1.data)
-        self.assertEquals(None, self.node1.left_p)
-        self.assertEquals(None, self.node1.right_p)
+        self.assertEqual(None, self.node1.data)
+        self.assertEqual(None, self.node1.left_p)
+        self.assertEqual(None, self.node1.right_p)
 
     def testBuildNodeStructureInt(self):
         self.node1.build_helper(self.xpr1)
@@ -63,7 +60,7 @@ class TestTxprNodes(unittest.TestCase):
         self.node1.build_helper(self.xpr1)
         self.assertEqual(5, self.node1.node_solve_txpr())
 
-        node2 = t_node()
+        node2 = txpr_node_obj()
         node2.build_helper(self.xpr2)
         self.assertEqual(-10, node2.node_solve_txpr())
 

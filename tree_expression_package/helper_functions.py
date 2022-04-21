@@ -1,30 +1,4 @@
-
-'''
-Ramzi Adil
-CS5700
-Spring 2021
-Assignment 1: Sockets
-
-This file is meant to run on python v. 3.6.8
-
-link to assignment: https://david.choffnes.com/classes/cs4700sp22/project1.php
-
-The purpose of this file is to have a function that
-can parse a string tree expression into segments
-stored in a dictionary.
-
-The format of the strings to parse is:
-    > txpr := [int] | '(' [txpr] [op] [txpr] ')'
-operators that are available are
-    > op   := '+' | '-' | '*' | '//' | '<<^'
-    > 'a // b' := floor[a / b]
-    > 'a <<^ b' := (a << 13) (xor) b
-All integers in the tree are 32-bit signed integers,
-    however, the result of the calculation must have infinite precision
-'''
-
 OPERATORS = ["+","-", "*","//","<<^"] # constant list
-
 
 def parse_string_to_dict(expr : str) -> list:
     '''
@@ -39,25 +13,27 @@ def parse_string_to_dict(expr : str) -> list:
             dictionary[op] = "+"
             dictionary[left] = "a"
             dictionary[right] = "b"
-        > if dictionary[op] not in OPERATORS then its a single int i.e.
+        > if dictionary[op] not in OPERATORS then it's a single int i.e.
         ex: "a" will yield dictionary of
             dictionary[op] = "a"
             dictionary[left] = None
             dictionary[right] = None
+        > a and b can be txpr themselves.
     '''
+
 
     expr_lst = expr.split(" ")
     negative_len_list = -(len(expr_lst)) - 1 #used to iterate list backwards
     right_paren_count = 0 # counts amount of right parentheses "scanned"
     item_dict = {} # dictionary to return
+    operator_split_pos = -1
 
-    if len(expr_lst) > 1: # if txpr NOT just an int
+    if len(expr_lst) > 1: # if the whole txpr is NOT an int
         for i in range(-1, negative_len_list, -1):
-            #TODO delete x
-            x = expr_lst[i]
             if expr_lst[i].isnumeric():
-                #if number and no right paren encounter
+                #if the expression is just the number
                 if right_paren_count == 0:
+                    operator_split_pos = i
                     break
                 else:
                     continue
@@ -74,9 +50,9 @@ def parse_string_to_dict(expr : str) -> list:
 
         operator = expr_lst[operator_split_pos]
         # left expression does not have an empty space on the right side/end of expression
-        # outer paren pair is removed via list slice
+        # outer parenthesis pair is removed via list slice
         left_expr = " ".join(expr_lst[negative_len_list + 2:operator_split_pos])
-        # TODO WARNING Possible error point: maybe don't include ) paren below
+        # WARNING: Possible error point: maybe don't include ) paren below
         right_expr = " ".join(expr_lst[operator_split_pos + 1:-1])
         item_dict["op"] = operator
         item_dict["left"] = left_expr
@@ -89,15 +65,17 @@ def parse_string_to_dict(expr : str) -> list:
     return item_dict
 
 def isInt(value : str):
+    '''
+    This function checks if the string can be converted into a
+        numeric (float).
+    :param value: The string to analyze.
+    :return: A boolean, true if the string param is a numeric, false otherwise
+    '''
     try:
         float(value)
         return True
     except ValueError:
         return False
-
-def left_and_XOR(a : int, b : int):
-    #'a <<^ b' := (a << 13)(xor) b
-    return ( ( a << 13 ) ^ b)
 
 def parse_input_to_useable():
     x = ""
@@ -111,13 +89,3 @@ def parse_input_to_useable():
 
     print(x)
 
-
-def main():
-    x = []
-    with open("sample.txt", 'r') as simple:
-        for each in simple.readlines():
-            y = each.strip("\n")
-            x.append(y)
-    print(" ".join(x))
-
-#main()

@@ -1,13 +1,10 @@
-from parse_string_to_seg_module import parse_string_to_dict
-from parse_string_to_seg_module import isInt
+from tree_expression_package.helper_functions import parse_string_to_dict
+from tree_expression_package.helper_functions import isInt
 
-
-
-class t_node:
+class txpr_node_obj:
     '''
     This is a node class for a binary tree. Each node
-    has a left and right pointer. Each pointer should eventually
-    point to a node. At construction each attribute only has none
+    has a left and right pointer. At construction each attribute only has none
     '''
 
 
@@ -43,8 +40,8 @@ class t_node:
         # recursive case
         else:
             self.data = dict_item["op"]
-            self.left_p = t_node()
-            self.right_p = t_node()
+            self.left_p = txpr_node_obj()
+            self.right_p = txpr_node_obj()
 
             (self.left_p).build_helper(dict_item["left"])
             (self.right_p).build_helper(dict_item["right"])
@@ -52,7 +49,9 @@ class t_node:
 
     def node_solve_txpr(self) -> int:
         '''
-        This function must solve the tree expression.
+        This function solves the a expression. This needs to be called at the
+        root node only. Calling at a different node will raise an error
+        or give incorrect value.
         operators that are available are
             > op   := '+' | '-' | '*' | '//' | '<<^'
             > 'a // b' := floor[a / b]
@@ -86,6 +85,3 @@ class t_node:
                     return left_child.node_solve_txpr() // right_child.node_solve_txpr()
             elif self.data == "<<^":
                 return (left_child.node_solve_txpr() << 13) ^ right_child.node_solve_txpr()
-
-
-

@@ -1,5 +1,5 @@
 import unittest
-import txpr_tree
+from tree_expression_package.txpr_tree import txpr_tree
 
 class test_tree(unittest.TestCase):
 
@@ -18,7 +18,7 @@ class test_tree(unittest.TestCase):
             ") ) // ( 7 // -1 ) ) ) // ( ( -92 * ( 87 - -30 ) ) <<^ 111 ) ) // ( ( 7 // ( -7 + -2 ) ) * ( -75 * ( " \
             "-106 <<^ -7 ) ) ) ) ) + ( ( 1057863386 * 380984409 ) // ( ( 10347 * 24704 ) + ( -25579 + -10966 ) ) ) ) )"
 
-        my_tree = txpr_tree.txpr_tree(example_expr)
+        my_tree = txpr_tree(example_expr)
         retList = my_tree.solve_tree_xpr()
         self.assertEqual(106239235818368919843985044682453135716255749122013737872, retList[1])
 
@@ -46,6 +46,6 @@ class test_tree(unittest.TestCase):
         "-1754491217 ) + ( -131460798 * ( 2109901059 * 1817484234 ) ) ) <<^ ( ( -1308336071 + -1214320267 ) * " \
         "1342918677 ) ) ) ) ) )"
 
-        my_tree = txpr_tree.txpr_tree(zero_xpr)
+        my_tree = txpr_tree(zero_xpr)
         retList = my_tree.solve_tree_xpr()
         self.assertEqual(["Failed",0], retList)
