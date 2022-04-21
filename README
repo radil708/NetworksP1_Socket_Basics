@@ -26,7 +26,6 @@ High Level Requirements:
 		an error, it may print an error message before terminating. Your program
 		should not write any files to disk, including writing to the secret_flags file.
 =============================================================================================
-
 How to run the program:
 
 	The client program must execute on the command line using the following command:
@@ -61,7 +60,6 @@ File Organization:
 	The rest of the files are in the main directory and are related to the executable
 
 =============================================================================================
-
 My Approach:
  - I invested a lot of my time in designing the program, making diagrams and flowcharts etc...
  - I used a recursive approach to solve the statements sent by the server
