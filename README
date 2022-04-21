@@ -34,14 +34,9 @@ How to run the program:
 	(Makefile is included in this code to create the executable, but the executable
 		is packaged in this submission as well)
 
-***Note to others who want to run this program: my neu id may be deprecated by the time
-	you want to run it, but as an example, I ran my program using the command:
-
-	./client -p 27995 -s project1.5700.network adil.r
-
 *** Note if you want to see the messages sent and received please run the
 	runWithDisplay.py without any arguments. I pre-filled the domain/hostname,
-	port, and username in the file. Again this is pre-filled with my credentials
+	port, and username in the file. This is pre-filled with my credentials
 	which may be deprecated at the time.
 =============================================================================================
 File Organization:
