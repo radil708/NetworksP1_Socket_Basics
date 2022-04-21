@@ -38,6 +38,7 @@ How to run the program:
 	runWithDisplay.py without any arguments. I pre-filled the domain/hostname,
 	port, and username in the file. This is pre-filled with my credentials
 	which may be deprecated at the time.
+	
 =============================================================================================
 File Organization:
 	simple_socket_package:
