@@ -37,7 +37,8 @@ How to run the program:
 *** Note if you want to see the messages sent and received please run the
 	runWithDisplay.py without any arguments. I pre-filled the domain/hostname,
 	port, and username in the file. This is pre-filled with my credentials
-	which may be deprecated at the time.
+	which may be outdated at past May 2021. The tests I have written can still 
+	be run though.
 	
 =============================================================================================
 File Organization:
